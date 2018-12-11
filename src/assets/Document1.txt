@@ -1,0 +1,22 @@
+<input type="text" [(ngModel)]="course" formControlName="course" (focus)="showOpts()" (blur)="hideOpts()">
+<ul>
+<li>
+<input type="checkbox" name="some" value="{{opt}}" (change)=inputEvent($event) *ngFor="let opt of options"></li>
+</ul>
+<h3>{{course}}</h3>
+
+
+
+showInd : boolean;
+course : string="";
+options=["op1","op2"];
+inputEvent(e){
+if(this.course.includes(e.val){
+this.course.replace(e.val+", ",'');
+}
+else{
+this.course+=e.val+', ';
+}
+}
+showOpts(){}
+hideOpts(){}

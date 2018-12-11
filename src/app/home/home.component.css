@@ -1,0 +1,69 @@
+table, th, td,tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    color:lightblue;
+
+}
+.dropdown-content a:visited{
+    color:lightblue;
+}
+
+h3{
+    width : 3.5%;
+}
+#signout{
+    float : right;
+}
+
+ul{
+    list-style-type: none;
+}
+.docdiv{
+    clear: both;
+    margin-top:50px;
+}
+
+/*______________________________
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }*/
+  .initialScroll{
+    background-color:black;
+    height:500px;
+    transition:height 0.3s;
+  }
+  .secondScroll{
+    background-color:black;
+    height:200px;
+    
+    transition:height 0.3s;
+  }
+
+
+
+  /* MHTML STYLES */
+  /* Style Definitions */
+ 

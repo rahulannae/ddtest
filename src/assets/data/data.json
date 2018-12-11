@@ -1,0 +1,22 @@
+[
+    {
+        "id" : 1,
+        "name" : "Rahul",
+        "location" : "Secunderabad"
+    },
+    {
+        "id" : 2,
+        "name" : "Rhul",
+        "location" : "Secunderabad"
+    },
+    {
+        "id" : 3,
+        "name" : "Rahl",
+        "location" : "Secunderabad"
+    },
+    {
+        "id" : 4,
+        "name" : "Raul",
+        "location" : "Secunderabad"
+    }
+]
