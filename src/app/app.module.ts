@@ -7,6 +7,7 @@ import {MatInputModule} from '@angular/material';
 import {MatAutocompleteModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes, ROUTES} from '@angular/router';
+import { ArcGaugeModule } from '@progress/kendo-angular-gauges';
 //import {FuzzySet} from 'fuzzyset.js';
 
 
@@ -21,10 +22,12 @@ import { ButtonDirDirective } from './button-dir.directive';
 import { HttpModule } from '@angular/http';
 import { GraphTestComponent } from './graph-test/graph-test.component';
 import { ChartsModule } from 'ng2-charts';
+import { KendoTestComponent } from './kendo-test/kendo-test.component';
 
 
  const appRoutes : Routes  = [
 {path : "app", component : HomeComponent},
+{path : "kendo", component : KendoTestComponent},
 {path : "test", component : GraphTestComponent},
 {path : "signin", component : SigninComponent},
 {path : "",redirectTo:"signin", pathMatch : "full"},
@@ -40,7 +43,8 @@ import { ChartsModule } from 'ng2-charts';
     SigninComponent,
     HomeComponent,
     ButtonDirDirective,
-    GraphTestComponent
+    GraphTestComponent,
+    KendoTestComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,10 @@ import { ChartsModule } from 'ng2-charts';
     MatInputModule,
     MatAutocompleteModule,
     RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule   
+    BrowserAnimationsModule  ,
+    HttpClientModule ,
+    // GaugesModule,
+    ArcGaugeModule
   ],
   providers: [TestService],
   bootstrap: [AppComponent]

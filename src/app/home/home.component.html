@@ -1,3 +1,15 @@
+<div id="inlineTest">
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<input type="file" (input)="docReplaceTest($event.target.files[0])">
+<br>
+<br>
+<br>
+<br>
 <h3>Matter</h3>
 
 <div class="dropdown">
@@ -106,7 +118,7 @@ Age :
   <div *ngIf=iframeURL>
   <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(iframeURL)">A framedoc?</iframe>
 </div>
-<h1>
+<h1 style="border:solid">
   DOCUMENT RENDERING
 </h1>
 <div>
@@ -142,3 +154,8 @@ Age :
 <div id="mammothHTML" >
 First Content
 </div>
+
+</div>
+
+<button (click)="checkInline()">CHECK INLINE</button>
+<button (click)="checkDocx()">DOCX</button>
