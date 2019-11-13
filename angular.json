@@ -26,7 +26,6 @@
             ],
             "scripts": [
               "node_modules/angular-filter/dist/angular-filter.js",
-              "node_modules/chart.js/src/chart.js",
               "node_modules/jquery/dist/jquery.js",
               "src/assets/scripts/bootstrap.min.js"
               
@@ -78,7 +77,6 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
               "node_modules/angular-filter/dist/angular-filter.js",
-              "node_modules/chart.js/src/chart.js",
               "node_modules/jquery/dist/jquery.js",
               "src/assets/scripts/bootstrap.min.js"
             ],

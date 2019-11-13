@@ -1,4 +1,10 @@
-#signin{
-    float : right;
-    position : fixed;
+#signin {
+    float: right;
+    position: fixed;
+}
+
+#notSignIn {
+    clear: both;
+    top: 10px;
+    position: absolute;
 }

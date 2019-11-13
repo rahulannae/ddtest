@@ -2,7 +2,7 @@
   graph-test works!
 </p>
 
-<div class="col-md-6 mainDiv">
+<!-- <div class="col-md-6 mainDiv">
  
   <canvas baseChart
               [data]="lineChartData"
@@ -22,4 +22,13 @@
 </div>
 <div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
   <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
-</div>
+</div> -->
+
+
+<hr>
+<hr>
+<hr>
+<hr>
+<highcharts-chart [Highcharts]="highcharts" [options]="chartOptions"
+  style="width: 20%; height: 200px; display: block;">
+</highcharts-chart>

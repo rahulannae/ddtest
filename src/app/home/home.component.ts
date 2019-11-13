@@ -3,7 +3,7 @@ import { FormsModule, FormGroup, FormControl, Validators, FormBuilder, FormArray
 import * as FuzzySet from 'fuzzyset.js';
 import { TestService } from '../test.service';
 import { Multiple } from '../Multiple.model';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 // import *  as mammoth from 'mammoth';
 // declare var require:any;
 // declare var $window:any;
@@ -18,6 +18,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import htmlToDocx from 'html-docx-js/dist/html-docx';
 import { saveAs } from 'file-saver';
 import computedStyleToInlineStyle from 'computed-style-to-inline-style';
+import { stringify } from '@angular/compiler/src/util';
 
 
 declare const Buffer;
@@ -41,6 +42,7 @@ interface SampleInterface {
 
 export class HomeComponent implements OnInit {
 
+  textFieldValue = 'WORKS?';
   sampleForm: any;
   lastElement: string;
   suggestions: string[] = ['sugg', 'sugg1', 'sugg1', 'sugg2', 'sugg3', 'sugg4'];
@@ -64,6 +66,8 @@ export class HomeComponent implements OnInit {
     { title: 'Angels & Demons', author: 'Dan Louis' },
     { title: 'The Lost Symbol', author: 'David Maine' },
     { title: 'Old Man\'s War', author: 'Rob Grant' }];
+  mammothHTML: string | SafeHtml = 'REPLACED';
+
 
 
   constructor(private tserv: TestService, private fb: FormBuilder, public sanitizer: DomSanitizer, private httpCliient: HttpClient) {
@@ -321,11 +325,12 @@ export class HomeComponent implements OnInit {
     fr2.onload = () => {
       console.log('READ AS ARRAY BUFFFER CAN DISPLAY?', fr2.result);
       mammoth.convertToHtml({ arrayBuffer: fr2.result })
-        .then(function (result) {
+        .then((result) => {
           const text = result.value;
           const messages = result.messages;
           console.log('MAMMOTH GENERATED HTML', text);
-          document.getElementById('mammothHTML').innerHTML = text;
+          this.mammothHTML = text;
+          // document.getElementById('mammothHTML').innerHTML = text;
         });
     };
   }
@@ -378,4 +383,88 @@ export class HomeComponent implements OnInit {
     // // })
   }
 
+  onCSVUpload(event): void {
+    console.log('WHAT TYPE', event);
+    const file = event.target.files[0];
+    console.log('ABOUT TO READ', file);
+    const fr = new FileReader();
+    fr.readAsText(file);
+    fr.onload = () => {
+      const final = this.readCSV(fr.result as string);
+      console.log('FINAL VAL', final);
+      event.srcElement.value = '';
+    };
+  }
+
+  readCSV(rawText: string): string[][] {
+    const arrayResult = this.setParagraphs(rawText);
+    console.log('FINALE!!!', arrayResult);
+    return arrayResult;
+    // const lines = rawText.split('\n');
+    // const result: string[][] = [];
+    // console.log('BEFORE COMMA SPLIT', lines);
+    // lines.forEach(l => {
+    //   result.push(l.split(','));
+    // });
+    // return result;
+  }
+
+  setParagraphs(raw: string): string[][] {
+    let count = 0;
+    const freg = new RegExp(/"""/, 'gm');
+    raw = raw.replace(freg, '|');
+    let tempMap = new Map<string, string>();
+    // let tempObj: any = {};
+    // need to find better solution
+    const reg = new RegExp(/\|[\w\s,!@#$%^&*()-\=_+./;:'"\[\]{}()]*?\|/, 'gim');
+    console.log('REGEX TEST', reg.test(raw));
+    const replaced = raw.replace(reg, (str: string) => {
+      count++;
+      tempMap.set(`REPLACE${count}`, str);
+      // tempObj[`REPLACE${count}`] = str;
+      return `REPLACE${count}`.trim();
+    });
+    // console.log('MAPDATA', tempMap);
+    console.log('REPLACED AS ', replaced);
+    const lines = replaced.split('\n');
+    const preResult: string[][] = [];
+    console.log('BEFORE COMMA SPLIT', lines);
+    lines.forEach(l => {
+      preResult.push(l.split(','));
+    });
+    const result: string[][] = [];
+    preResult.forEach(line => {
+      line.map(cell => {
+
+        // console.log(this.altMapget(tempMap, cell));
+        console.log('VALID', cell);
+        const trimmed = cell.trim();
+        if (cell.includes('REPLACE') && tempMap.has(trimmed)) {
+          console.log('VALID', cell);
+          // cell = tempObj[cell];
+          cell = tempMap.get(trimmed);
+        }
+      });
+      result.push(line);
+    });
+
+    return result;
+  }
+  altMapget(map: Map<string, string>, key): string {
+    // console.log('MAP', map);
+    console.log('key', key);
+    const entries = map.entries();
+    let result = '';
+    console.log('ITERABLE', entries);
+    Array.from(entries).forEach(entry => {
+
+      console.log('WHAT THAFFFF', entry[0]);
+      console.log('WHAT THAFFFF', key);
+      console.log('WHAT THAFFFF', entry[0].trim() === key.trim());
+      if (entry[0].trim() === key.trim()) {
+        result = entry[1].replace('|', '');
+      }
+    });
+    return result;
+  }
 }

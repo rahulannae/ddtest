@@ -9,8 +9,8 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-   @ViewChild(ChildComponent)
-   private childComp : ChildComponent;
+  //  @ViewChild(ChildComponent)
+  //  private childComp : ChildComponent;
    key : string;
    str : string;
    cvar :string = "orange";
@@ -68,7 +68,7 @@ samFun(){
 
 onBlur(btext : string){
   console.log( "name   Lost focus");
-  console.log(this.childComp.str);
+  // console.log(this.childComp.str);
 }
 
 }

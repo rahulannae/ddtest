@@ -1,69 +1,85 @@
+
+
+
+<h1>FABUI</h1>
+
+<fab-text-field maxLength="15" [(value)]="textFieldValue"></fab-text-field>
+<h1>FABUI</h1>
+<br>
+<br>
+<br>
+<br>
+<h3>
+  Only CSV
+</h3>
+<input type="file" accept=".csv" (change) = "onCSVUpload($event)">
+
 <div id="inlineTest">
-<br>
-<br>
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
-<input type="file" (input)="docReplaceTest($event.target.files[0])">
-<br>
-<br>
-<br>
-<br>
-<h3>Matter</h3>
+  <input type="file" (input)="docReplaceTest($event.target.files[0])">
+  <br>
+  <br>
+  <br>
+  <br>
+  <h3>Matter</h3>
 
-<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example
+      <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+    </ul>
+  </div>
+  <input type="text" [(ngModel)]="course" (focus)="showOpts(0)" name="somename" readonly>
+  <button (click)="hideOpts(0)">Close</button>
+  <ul id="0">
+    <li *ngFor="let opt of options">
+      <input type="checkbox" name="some" [value]="opt" (change)=inputEvent($event.target.value,0)>{{opt}}<br>
+    </li>
   </ul>
-</div>
-<input type="text" [(ngModel)]="course"  (focus)="showOpts(0)" name="somename"  readonly>
-<button (click)="hideOpts(0)">Close</button>
-<ul id="0">
-<li *ngFor="let opt of options">
-<input type="checkbox" name="some" [value]="opt" (change)=inputEvent($event.target.value,0) >{{opt}}<br>
-</li>
-</ul>
-<h3>{{course}}</h3>
-<a id="signout" routerLink="/signin">Logout</a>
-<!-- <ul>
+  <h3>{{course}}</h3>
+  <a id="signout" routerLink="/signin">Logout</a>
+  <!-- <ul>
 <div *ngFor="let hero of options let i=index">
   <li>
       <p> {{i + 1}} - <span *ngIf="names">{{names[i]}}</span></p>
   <input type="text" placeholder="Names" [(ngModel)]="names[i]" (blur)="onBlur(this.value)">
 </li>
 </div></ul> -->
-<div id="scrollElement" class="initialScroll">
+  <div id="scrollElement" class="initialScroll">
 
-</div>
-<button (click)="samFun()">Print</button>
-<h3  [appFdir]="cvar" >Hello</h3>
-<button  [disabled]="dis" (click)="alertF()">akjsdkashd</button>
-<button (click)="toggle()">Toggle</button>
-<h1>Data list autocomplete</h1>
-<form action="/action_page.php" method="get">
-  <input list="titles"  [(ngModel)]="dlistvar" name="sname" placeholder="SECOND" (keyup)="parseAr()">
-  <datalist id="titles">
-    <option *ngFor="let opt of options1" value="{{opt}}">
-   
-  </datalist>
-  <h4>{{dlistvar}}</h4>
-  <div *ngIf="strRes.length">
-  <p *ngFor="let nm of strRes">{{nm}}</p>
   </div>
-  <input type="submit">
-</form>
-<h1>Form Autocomplete</h1>
-<form class="example-form">
-  <input type="text" value="text field">
-  <hr/>
-  <!-- <mat-form-field class="example-full-width">
+  <button (click)="samFun()">Print</button>
+  <h3 [appFdir]="cvar">Hello</h3>
+  <button [disabled]="dis" (click)="alertF()">akjsdkashd</button>
+  <button (click)="toggle()">Toggle</button>
+  <h1>Data list autocomplete</h1>
+  <form action="/action_page.php" method="get">
+    <input list="titles" [(ngModel)]="dlistvar" name="sname" placeholder="SECOND" (keyup)="parseAr()">
+    <datalist id="titles">
+      <option *ngFor="let opt of options1" value="{{opt}}">
+
+    </datalist>
+    <h4>{{dlistvar}}</h4>
+    <div *ngIf="strRes.length">
+      <p *ngFor="let nm of strRes">{{nm}}</p>
+    </div>
+    <input type="submit">
+  </form>
+  <h1>Form Autocomplete</h1>
+  <form class="example-form">
+    <input type="text" value="text field">
+    <hr />
+    <!-- <mat-form-field class="example-full-width">
     <input type="text" placeholder="Pick one" name="snames"  matInput [formControl]="myControl" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of options1" [value]="option">
@@ -71,91 +87,95 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field> -->
-</form>
-<h1>Using split with an input</h1>
+  </form>
+  <h1>Using split with an input</h1>
 
 
-<input type="text" [(ngModel)]="search" name="sb" placeholder="search book" />
-<!-- <li *ngFor="let book of books | fuzzy: search">
+  <input type="text" [(ngModel)]="search" name="sb" placeholder="search book" />
+  <!-- <li *ngFor="let book of books | fuzzy: search">
   {{ book.title }}
 </li> -->
 
-<h1>REACcTIVE FORM</h1>
-<form [formGroup]="sampleForm" class="form-control" (ngSubmit)="formSubmit()">
-Name:
-  <input id="name1" name="email" formControlName="email" type="text" />
-Age : 
-<input id="age1" name="password" formControlName="password" type="text" />
-<div formArrayName="multiple" >
-    <div *ngFor="let address of multiples.controls; let i=index" [formGroupName]="i" >
-    <input type="text" formControlName="val1">val1
-    <input type="text" formControlName="val2">val2
-    <input type="text" id="{{i}}input"  formControlName="course" readonly (focus)="showOpts(i)" name="somename"  >
-<button (click)="hideOpts(i)" type="button">Close</button>
-<ul id={{i}}opts>
-<li *ngFor="let opt of options">
-<input type="checkbox" name="some"  [value]="opt" (change)="inputEvent($event.target.value,i)" >{{opt}}<br>
-</li>
-</ul>
-    <input type="button" (click)="removeFields(i)" value="REMOVE"/>
+  <h1>REACcTIVE FORM</h1>
+  <form [formGroup]="sampleForm" class="form-control" (ngSubmit)="formSubmit()">
+    Name:
+    <input id="name1" name="email" formControlName="email" type="text" />
+    Age :
+    <input id="age1" name="password" formControlName="password" type="text" />
+    <div formArrayName="multiple">
+      <div *ngFor="let address of multiples.controls; let i=index" [formGroupName]="i">
+        <input type="text" formControlName="val1">val1
+        <input type="text" formControlName="val2">val2
+        <input type="text" id="{{i}}input" formControlName="course" readonly (focus)="showOpts(i)" name="somename">
+        <button (click)="hideOpts(i)" type="button">Close</button>
+        <ul id={{i}}opts>
+          <li *ngFor="let opt of options">
+            <input type="checkbox" name="some" [value]="opt" (change)="inputEvent($event.target.value,i)">{{opt}}<br>
+          </li>
+        </ul>
+        <input type="button" (click)="removeFields(i)" value="REMOVE" />
+
+      </div>
 
     </div>
-
-</div>
-<input type="button" (click)="addFields()" value="ADD"/>
-<input type="submit" name="submit" value="Submit"/>
-
-  
-</form>
+    <input type="button" (click)="addFields()" value="ADD" />
+    <input type="submit" name="submit" value="Submit" />
 
 
-<h2>DOWNLOAD IMAGE</h2>
-<div height=500px class="docdiv"> 
-  <h1>
-    New div for doc
-  </h1>
-  <input type="file" (input)="inputFile($event.target.files)" name="filetoshow">
-  <div *ngIf=iframeURL>
-  <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(iframeURL)">A framedoc?</iframe>
-</div>
-<h1 style="border:solid">
-  DOCUMENT RENDERING
-</h1>
-<div>
-  <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=http://localhost:53565/v1/Applicant/GetDocumentByType/5b4fa499c0430f31b09cb7eb"></iframe>
-  <!-- <iframe src="http://docs.google.com/gview?url=http://localhost:53565/v1/Applicant/GetDocumentByType/5b4fa499c0430f31b09cb7eb&embedded=true"></iframe> -->
-  <!-- <iframe src="http://docs.google.com/gview?url=http://remote.url.tld/path/to/document.doc&embedded=true"></iframe> -->
-</div>
-</div> 
-<h2>Drag and drop func</h2>
-<table style="width:100%">
-  <tr style="width:100%" *ngFor="let week of [0,1,2,3,4,5];index as w">
-    <td>
-    <table style="width:100%">
-      <tr style="width:100%">
-        <td *ngFor="let day of [1,2,3,4,5,6,7];index as d">{{w*7+d+1}}
-
-        </td>
-      </tr>
-      <tr style="width:100%">
-        <td *ngFor="let day of [1,2,3,4,5,6,7];index as de">
-          <div class="calevent">
-            <b>Event Here</b>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </td>
-  </tr>
-</table>
-<h1>EDITOR FROM HERE</h1>
+  </form>
 
 
-<div id="mammothHTML" >
-First Content
-</div>
+  <h2>DOWNLOAD IMAGE</h2>
+  <div height=500px class="docdiv">
+    <h1>
+      New div for doc
+    </h1>
+    <input type="file" (input)="inputFile($event.target.files)" name="filetoshow">
+    <div *ngIf=iframeURL>
+      <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(iframeURL)">A framedoc?</iframe>
+    </div>
+    <h1 style="border:solid">
+      DOCUMENT RENDERING
+    </h1>
+    <div>
+      <iframe
+        src="https://view.officeapps.live.com/op/embed.aspx?src=http://localhost:53565/v1/Applicant/GetDocumentByType/5b4fa499c0430f31b09cb7eb"></iframe>
+      <!-- <iframe src="http://docs.google.com/gview?url=http://localhost:53565/v1/Applicant/GetDocumentByType/5b4fa499c0430f31b09cb7eb&embedded=true"></iframe> -->
+      <!-- <iframe src="http://docs.google.com/gview?url=http://remote.url.tld/path/to/document.doc&embedded=true"></iframe> -->
+    </div>
+  </div>
+  <h2>Drag and drop func</h2>
+  <table style="width:100%">
+    <tr style="width:100%" *ngFor="let week of [0,1,2,3,4,5];index as w">
+      <td>
+        <table style="width:100%">
+          <tr style="width:100%">
+            <td *ngFor="let day of [1,2,3,4,5,6,7];index as d">{{w*7+d+1}}
+
+            </td>
+          </tr>
+          <tr style="width:100%">
+            <td *ngFor="let day of [1,2,3,4,5,6,7];index as de">
+              <div class="calevent">
+                <b>Event Here</b>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <h1>EDITOR FROM HERE</h1>
+
+
+  <div [innerHTML]="mammothHTML" id="mammothHTML">
+    
+  </div>
 
 </div>
 
 <button (click)="checkInline()">CHECK INLINE</button>
 <button (click)="checkDocx()">DOCX</button>
+
+<br>
+

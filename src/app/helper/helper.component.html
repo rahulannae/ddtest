@@ -1,0 +1,15 @@
+<div class="form-group row">
+    <label class="col-lg-6 pt-2 label-header">Group </label>
+    <button type="button" class="col btn btn-success m-2" (click)="addFieldGroup($event)">Add Group</button>
+    <button type="button" class="col btn btn-danger m-2" (click)="deleteFieldGroup($event)">Delete Group</button>
+    <div class="mt-2 col-lg-12 group-name ">
+        <span *ngFor='let g of array;index as gI;trackBy: indexTracker'>
+            <input type="text" class="form-control col-lg-12 general m-2" [(ngModel)]="array[gI]">
+            <span class="form-control col-lg-12 general m-2">{{gI}}COQ{{g}}</span>
+        </span>
+    </div>
+</div>
+
+<input [(ngModel)]="thisWorks"> {{thisWorks}}
+<hr>
+<span *ngFor="let gr of array">{{gr}}" " </span>
