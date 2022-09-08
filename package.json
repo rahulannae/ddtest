@@ -49,7 +49,7 @@
     "html-docx-js": "^0.3.1",
     "inline-css": "^2.4.2",
     "jsonwebtoken": "^8.5.1",
-    "jszip": "^3.2.2",
+    "jszip": "^3.7.0",
     "jszip-utils": "0.1.0",
     "mammoth": "^1.4.8",
     "ng2-charts": "^2.3.0",
