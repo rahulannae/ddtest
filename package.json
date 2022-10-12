@@ -40,7 +40,7 @@
     "core-js": "^3.2.1",
     "crypto": "^1.0.1",
     "docx": "^5.0.0-rc5",
-    "docxtemplater": "^3.14.1",
+    "docxtemplater": "^3.31.4",
     "file-saver": "^2.0.2",
     "fs": "0.0.1-security",
     "fuzzyset.js": "0.0.8",
